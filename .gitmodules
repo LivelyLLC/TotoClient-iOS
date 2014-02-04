@@ -1,6 +1,3 @@
-[submodule "libb64"]
-	path = libb64
-url=https://github.com/LivelyLLC/libb64-iOS.git
 [submodule "ObjectiveBSON"]
 	path = ObjectiveBSON
 url=https://github.com/LivelyLLC/ObjectiveBSON.git

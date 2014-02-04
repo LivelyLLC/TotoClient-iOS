@@ -4,7 +4,7 @@
 //
 
 #import "TCAsyncImageView.h"
-#import "UIImage+TCCaching.h"
+#import "TCDataCache.h"
 #import "TCDelayedDispatcher.h"
 
 @interface TCAsyncImageView ()
@@ -19,6 +19,7 @@
 -(void)initialize {
     self.indicatorStyle = UIActivityIndicatorViewStyleGray;
     self.dispatcher = [TCDelayedDispatcher dispatcher];
+    self.imageCache = [TCDataCache sharedCache];
 }
 
 -(id)initWithFrame:(CGRect)frame {
@@ -51,6 +52,7 @@
 
 -(void)dealloc {
     [_dispatcher release];
+    [_imageCache release];
     [super dealloc];
 }
 
@@ -59,6 +61,11 @@
 }
 
 -(void)setImageWithURL:(NSURL*)url fallbackImage:(UIImage*)fallbackImage {
+    [self setImageWithURL:url fallbackImage:fallbackImage retryCount:_autoRetryCount];
+}
+
+-(void)setImageWithURL:(NSURL*)url fallbackImage:(UIImage*)fallbackImage retryCount:(NSUInteger)retryCount {
+    if (!url) return;
     if (!self.indicatorView) {
         self.indicatorView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.indicatorStyle] autorelease];
         self.indicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -67,17 +74,25 @@
         [self addSubview:self.indicatorView];
     }
     NSTimeInterval token = [_dispatcher updateToken];
-    [UIImage imageFromURL:url block:^(UIImage *image){
+    [self imageFromURL:url block:^(UIImage *image) {
         if (![_dispatcher isValidToken:token])
             return;
         [self.indicatorView removeFromSuperview];
         self.indicatorView = nil;
         if (image) {
             self.image = image;
+        } else if (retryCount > 0) {
+            dispatch_async(dispatch_get_current_queue(), ^{
+                [self setImageWithURL:url fallbackImage:fallbackImage retryCount:retryCount - 1];
+            });
         } else {
             self.image = fallbackImage;
         }
     }];
+}
+
+-(void)imageFromURL:(NSURL*)url block:(void (^)(UIImage *image))block {
+    [_imageCache imageFromURL:url block:block];
 }
 
 @end
