@@ -97,8 +97,11 @@ typedef void (^ImageCallback)(UIImage*);
 -(void)dataFromURL:(NSURL *)url ignoreCache:(BOOL)ignoreCache block:(void (^)(NSData *))block {
     NSString *cachePath = [self cachePathForURL:url];
     if (!ignoreCache && [[NSFileManager defaultManager] fileExistsAtPath:cachePath]) {
-        block([NSData dataWithContentsOfFile:cachePath]);
-        return;
+        NSData *data = [NSData dataWithContentsOfFile:cachePath];
+        if (data != nil) {
+            block(data);
+            return;
+        }
     }
     TCDataService *service = [TCDataService service];
     service.runLoop = _runLoop;
