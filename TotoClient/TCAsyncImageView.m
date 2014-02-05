@@ -82,7 +82,7 @@
         if (image) {
             self.image = image;
         } else if (retryCount > 0) {
-            dispatch_async(dispatch_get_current_queue(), ^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [self setImageWithURL:url fallbackImage:fallbackImage retryCount:retryCount - 1];
             });
         } else {
