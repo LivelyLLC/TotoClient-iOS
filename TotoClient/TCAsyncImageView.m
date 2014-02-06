@@ -67,7 +67,17 @@
 }
 
 -(void)setImageWithURL:(NSURL*)url fallbackImage:(UIImage*)fallbackImage retryCount:(NSUInteger)retryCount {
-    if (!url || ([_imageURL isEqual:url] && self.image)) return;
+    if (!url) {
+        NSLog((@"%s [Line %d] called with nil url"), __PRETTY_FUNCTION__, __LINE__);
+        if (fallbackImage) {
+            [self setImage:fallbackImage];
+            self.imageURL = nil;
+        }
+        return;
+    }
+
+    if (([_imageURL isEqual:url] && self.image)) return;
+    
     self.imageURL = url;
     if (!_keepImageWhileLoading) self.image = nil;
     if (!self.indicatorView) {

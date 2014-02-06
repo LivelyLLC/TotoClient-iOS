@@ -95,6 +95,11 @@ typedef void (^ImageCallback)(UIImage*);
 }
 
 -(void)dataFromURL:(NSURL *)url ignoreCache:(BOOL)ignoreCache block:(void (^)(NSData *))block {
+    if (url == nil) {
+        NSLog((@"%s [Line %d] called with nil url"), __PRETTY_FUNCTION__, __LINE__);
+        block(nil);
+        return;
+    }
     NSString *cachePath = [self cachePathForURL:url];
     if (!ignoreCache && [[NSFileManager defaultManager] fileExistsAtPath:cachePath]) {
         NSData *data = [NSData dataWithContentsOfFile:cachePath];
@@ -152,6 +157,11 @@ typedef void (^ImageCallback)(UIImage*);
 }
 
 -(void)imageFromURL:(NSURL *)url ignoreCache:(BOOL)ignoreCache block:(ImageCallback)block {
+    if (url == nil) {
+        NSLog((@"%s [Line %d] called with nil url"), __PRETTY_FUNCTION__, __LINE__);
+        block(nil);
+        return;
+    }
     UIImage *memoryCachedImage = [_cache objectForKey:url];
     if (memoryCachedImage) {
         block(memoryCachedImage);
