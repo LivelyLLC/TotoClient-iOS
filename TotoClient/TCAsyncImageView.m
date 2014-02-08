@@ -58,6 +58,11 @@
     [super dealloc];
 }
 
+- (void) setImage:(UIImage *)image {
+    [super setImage:image];
+    self.imageURL = nil;
+}
+
 -(void)setImageWithURL:(NSURL*)url {
     [self setImageWithURL:url fallbackImage:nil];
 }
@@ -70,8 +75,7 @@
     if (!url) {
         NSLog((@"%s [Line %d] called with nil url"), __PRETTY_FUNCTION__, __LINE__);
         if (fallbackImage) {
-            [self setImage:fallbackImage];
-            self.imageURL = nil;
+            self.image = fallbackImage;
         }
         return;
     }
@@ -79,7 +83,7 @@
     if (([_imageURL isEqual:url] && self.image)) return;
     
     self.imageURL = url;
-    if (!_keepImageWhileLoading) self.image = nil;
+    if (!_keepImageWhileLoading) [super setImage:nil];
     if (!self.indicatorView) {
         self.indicatorView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.indicatorStyle] autorelease];
         self.indicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -94,13 +98,13 @@
         [self.indicatorView removeFromSuperview];
         self.indicatorView = nil;
         if (image) {
-            self.image = image;
+            [super setImage:image];
         } else if (retryCount > 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self setImageWithURL:url fallbackImage:fallbackImage retryCount:retryCount - 1];
             });
         } else {
-            self.image = fallbackImage;
+            [super setImage:fallbackImage];
         }
     }];
 }
