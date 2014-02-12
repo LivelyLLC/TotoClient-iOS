@@ -5,6 +5,7 @@
 
 #import "TCHMAC.h"
 #import <CommonCrypto/CommonHMAC.h>
+#import "NSData+Base64.h"
 
 @implementation TCHMAC
 
@@ -20,7 +21,7 @@
 }
 
 +(NSString *)SHA1Base64DigestWithKey:(NSData *)key data:(NSData *)data {
-    NSString *hmac = [[[TCHMAC SHA1DigestWithKey:key data:data] base64EncodedStringWithOptions:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *hmac = [[[TCHMAC SHA1DigestWithKey:key data:data] base64Encoding] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return hmac;
 }
 

@@ -27,6 +27,8 @@
 		24FAA26014B76D66005D8027 /* TCHMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FAA25A14B76D66005D8027 /* TCHMAC.m */; };
 		24FAA26114B76D66005D8027 /* TotoService.h in Headers */ = {isa = PBXBuildFile; fileRef = 24FAA25B14B76D66005D8027 /* TotoService.h */; settings = {ATTRIBUTES = (); }; };
 		24FAA26214B76D66005D8027 /* TotoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FAA25C14B76D66005D8027 /* TotoService.m */; };
+		D89F24B418AB0C350011F0A8 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = D89F24B218AB0C350011F0A8 /* NSData+Base64.h */; };
+		D89F24B518AB0C350011F0A8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D89F24B318AB0C350011F0A8 /* NSData+Base64.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		24FAA25A14B76D66005D8027 /* TCHMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHMAC.m; sourceTree = "<group>"; };
 		24FAA25B14B76D66005D8027 /* TotoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotoService.h; sourceTree = "<group>"; };
 		24FAA25C14B76D66005D8027 /* TotoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotoService.m; sourceTree = "<group>"; };
+		D89F24B218AB0C350011F0A8 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		D89F24B318AB0C350011F0A8 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				24FAA25A14B76D66005D8027 /* TCHMAC.m */,
 				2411C78816631B1A00A87011 /* TCUUID.h */,
 				2411C78916631B1A00A87011 /* TCUUID.m */,
+				D89F24B218AB0C350011F0A8 /* NSData+Base64.h */,
+				D89F24B318AB0C350011F0A8 /* NSData+Base64.m */,
 				2407CBE51664B9B50083A489 /* NSURL+TCQuery.h */,
 				2407CBE61664B9B50083A489 /* NSURL+TCQuery.m */,
 				24FAA25B14B76D66005D8027 /* TotoService.h */,
@@ -169,6 +175,7 @@
 			files = (
 				245A81D81878A33D00065E1E /* TCDataCache.h in Headers */,
 				24FAA25D14B76D66005D8027 /* TCDataService.h in Headers */,
+				D89F24B418AB0C350011F0A8 /* NSData+Base64.h in Headers */,
 				24FAA26114B76D66005D8027 /* TotoService.h in Headers */,
 				24FAA25F14B76D66005D8027 /* TCHMAC.h in Headers */,
 				2411C78A16631B1B00A87011 /* TCUUID.h in Headers */,
@@ -261,6 +268,7 @@
 				2411C8011663244800A87011 /* TCAsyncImageView.m in Sources */,
 				245A81D91878A33D00065E1E /* TCDataCache.m in Sources */,
 				2411C8051663244800A87011 /* NSString+TCHash.m in Sources */,
+				D89F24B518AB0C350011F0A8 /* NSData+Base64.m in Sources */,
 				2411C8071663244800A87011 /* TCDelayedDispatcher.m in Sources */,
 				2407CBE81664B9B50083A489 /* NSURL+TCQuery.m in Sources */,
 			);
