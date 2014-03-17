@@ -357,7 +357,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"ObjectiveBSON/**",
-					"libb64/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,7 +376,6 @@
 				GCC_PREFIX_HEADER = "TotoClient/TotoClient-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"ObjectiveBSON/**",
-					"libb64/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
