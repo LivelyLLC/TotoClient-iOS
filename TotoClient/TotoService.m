@@ -101,6 +101,8 @@
 }
 
 -(void)setUserID:(NSString*)userID SessionID:(NSString*)sessionID expires:(NSTimeInterval)sessionExpires {
+    if (userID == nil || (NSNull *)userID == [NSNull null]) userID = @"";
+    if (sessionID == nil) sessionID = @"";
     [[NSUserDefaults standardUserDefaults] setValue:userID forKey:[TOTO_USER_ID_KEY stringByAppendingString:[_serviceURL absoluteString]]];
     [[NSUserDefaults standardUserDefaults] setValue:sessionID forKey:[TOTO_SESSION_ID_KEY stringByAppendingString:[_serviceURL absoluteString]]];
     [[NSUserDefaults standardUserDefaults] setDouble:sessionExpires forKey:[TOTO_SESSION_EXPIRES_KEY stringByAppendingString:[_serviceURL absoluteString]]];
@@ -124,6 +126,8 @@
         NSLog(@"Clearing Cookie: %@", cookie);
         [cookieStorage deleteCookie:cookie];
     }
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 #pragma mark - Batching
