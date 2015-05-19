@@ -68,7 +68,7 @@
 		2411C7FF1663244800A87011 /* TCDelayedDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDelayedDispatcher.m; sourceTree = "<group>"; };
 		245A81D61878A33D00065E1E /* TCDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCDataCache.h; sourceTree = "<group>"; };
 		245A81D71878A33D00065E1E /* TCDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCDataCache.m; sourceTree = "<group>"; };
-		24CB500F14B7AEFF007445F9 /* ObjectiveBSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveBSON.xcodeproj; path = ObjectiveBSON/ObjectiveBSON.xcodeproj; sourceTree = "<group>"; };
+		24CB500F14B7AEFF007445F9 /* ObjectiveBSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveBSON.xcodeproj; path = ../ObjectiveBSON/ObjectiveBSON.xcodeproj; sourceTree = "<group>"; };
 		24FAA24314B76CBA005D8027 /* libTotoClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTotoClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		24FAA24614B76CBA005D8027 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		24FAA24A14B76CBA005D8027 /* TotoClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TotoClient-Prefix.pch"; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"ObjectiveBSON/**",
+					"../ObjectiveBSON/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -375,7 +375,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TotoClient/TotoClient-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"ObjectiveBSON/**",
+					"../ObjectiveBSON/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
